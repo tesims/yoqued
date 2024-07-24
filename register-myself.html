@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoqued | Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="horizontal-header">
+        <button class="go-back-button" onclick="goBackHome()">Exit Form</button>
+    </header>
+
+    <div class="vertical-menu" id="verticalMenu">
+        <span class="menu-icon" onclick="toggleMenu()">☰</span>
+        <div class="menu-content" id="menuContent">
+            <a href="#introduction" onclick="showSection('introduction')">The Awkward Hello</a>
+            <a href="#personalInfo" onclick="showSection('personalInfo')">The Basics</a>
+            <a href="#demographics" onclick="showSection('demographics')">The Boring Stuff</a>
+            <a href="#culturalBackground" onclick="showSection('culturalBackground')">Where I'm Really From</a>
+            <a href="#familyDynamics" onclick="showSection('familyDynamics')">Family: Can't Live With 'Em...</a>
+            <a href="#personalityBehavior" onclick="showSection('personalityBehavior')">My Quirks and Perks</a>
+            <a href="#relationshipPreferences" onclick="showSection('relationshipPreferences')">Relationships but Make It Spicy</a>
+            <a href="#intellectualCompatibility" onclick="showSection('intellectualCompatibility')">Smart Stuff I Pretend to Know</a>
+            <a href="#emotionalIntelligence" onclick="showSection('emotionalIntelligence')">Feelings and Other Mysteries</a>
+            <a href="#selfRevealing" onclick="showSection('selfRevealing')">TMI Corner</a>
+            <a href="#personalInterests" onclick="showSection('personalInterests')">What I Do When I'm Procrastinating</a>
+            <a href="#confirmation" onclick="showSection('confirmation')">The "Are You Sure?" Moment</a>
+        </div>
+    </div>
+
+    <main>
+        <form id="registrationForm">
+            <!-- Introduction -->
+            <section id="introduction">
+                <h2>Welcome to the YOQUED social experiment!</h2>
+                <p>To participate, you'll need to complete this form. It contains around 80 carefully curated questions designed to build your unique dating profile and determine your monthly matches. While most questions are multiple choice, we recommend setting aside approximately 30 minutes to complete it.</p>
+
+                <p>Unlike the traditional, boring questions you find on dating apps, we've spent extensive time curating the ideal questions to help us find you the best possible matches. Most questions are optional, but your effort in providing meaningful responses will positively impact your matching options. The more effort you put in, the higher the quality of your matches. The best matches are reserved for those who put in the most effort.</p>
+                
+                <div class="navigation-buttons">
+                    <button type="button" onclick="showSection('personalInfo')">Start</button>
+                </div>
+            </section>
+
+            <!-- Personal Information -->
+            <section id="personalInfo" style="display:none;">
+                <h2>The Basics</h2>
+                <p>A curcial part of this experiment is maintaining a low level of anonymity. The phone number used will be the main identifier, and all future communication will happen via text.</p>
+                
+                <div class="form-group">
+                    <label for="screenName">Screen Name (do not include any self-identifying information):</label>
+                    <input type="text" id="screenName" name="screenName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                </div>
+
+                <div class="form-group checkbox-container">
+                    <label for="smsConsent">I agree to receive SMS text messages</label>
+                    <input type="checkbox" id="smsConsent" name="smsConsent" required>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" onclick="showSection('introduction')">Go Back</button>
+                    <button type="button" onclick="showSection('demographics')">Next</button>
+                </div>
+
+            </section>
+
+            <!-- Demographics -->
+            <section id="demographics" style="display:none;">
+                <h2>The Boring Stuff</h2>
+                <div class="form-group">
+                    <label for="age">How old are you?</label>
+                    <input type="number" id="age" name="age" required min="0" max="120" step="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="current_location">Where are you currently located?</label>
+                    <select id="current_location" name="current_location" required onchange="toggleOtherCityInput()">
+                        <option value="new_york">New York, NY, USA</option>
+                        <option value="los_angeles">Los Angeles, CA, USA</option>
+                        <option value="chicago">Chicago, IL, USA</option>
+                        <option value="boston">Boston, MA, USA</option>
+                        <option value="miami">Miami, FL, USA</option>
+                        <option value="san_francisco">San Francisco, CA, USA</option>
+                        <option value="toronto">Toronto, ON, Canada</option>
+                        <option value="vancouver">Vancouver, BC, Canada</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="other_city" name="other_city" placeholder="Please specify your city" style="display:none;">
+                </div>
+
+                <div class="form-group">
+                    <label for="expected_location">Where do you expect to be located within a year?</label>
+                    <select id="expected_location" name="expected_location" required onchange="toggleOtherExpectedCityInput()">
+                        <option value="new_york">New York, NY, USA</option>
+                        <option value="los_angeles">Los Angeles, CA, USA</option>
+                        <option value="chicago">Chicago, IL, USA</option>
+                        <option value="boston">Boston, MA, USA</option>
+                        <option value="miami">Miami, FL, USA</option>
+                        <option value="san_francisco">San Francisco, CA, USA</option>
+                        <option value="toronto">Toronto, ON, Canada</option>
+                        <option value="vancouver">Vancouver, BC, Canada</option>
+                        <option value="montreal">Montreal, QC, Canada</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="other_expected_city" name="other_expected_city" placeholder="Please specify your city" style="display:none;">
+                </div>
+
+                <div class="form-group">
+                    <label for="education">In what field did you receive your formal education?</label>
+                    <select id="education" name="education[]" multiple required>
+                        <option value="art_design">Art and Design</option>
+                        <option value="business">Business</option>
+                        <option value="education">Education</option>
+                        <option value="engineering">Engineering & Technology</option>
+                        <option value="humanities">Humanities</option>
+                        <option value="law">Law</option>
+                        <option value="medicine">Medicine</option>
+                        <option value="science">Science</option>
+                        <option value="social_sciences">Social Sciences</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="other_education" name="other_education" placeholder="Please specify your education" style="display:none;">
+                </div>
+
+                <div class="form-group">
+                    <label for="universities">Which of the following universities did you attend as a student?</label>
+                    <select id="universities" name="universities[]" multiple>
+                        <option value="brown">Brown University</option>
+                        <option value="caltech">California Institute of Technology (Caltech)</option>
+                        <option value="carnegie_mellon">Carnegie Mellon University</option>
+                        <option value="chicago">University of Chicago</option>
+                        <option value="columbia">Columbia University</option>
+                        <option value="cornell">Cornell University</option>
+                        <option value="duke">Duke University</option>
+                        <option value="harvard">Harvard University</option>
+                        <option value="imperial">Imperial College London</option>
+                        <option value="jhu">Johns Hopkins University</option>
+                        <option value="mit">Massachusetts Institute of Technology (MIT)</option>
+                        <option value="northwestern">Northwestern University</option>
+                        <option value="nyu">New York University (NYU)</option>
+                        <option value="cambridge">University of Cambridge</option>
+                        <option value="oxford">University of Oxford</option>
+                        <option value="penn">University of Pennsylvania</option>
+                        <option value="princeton">Princeton University</option>
+                        <option value="stanford">Stanford University</option>
+                        <option value="uc_berkeley">University of California, Berkeley (UC Berkeley)</option>
+                        <option value="ucla">University of California, Los Angeles (UCLA)</option>
+                        <option value="uc_davis">University of California, Davis (UC Davis)</option>
+                        <option value="uc_san_diego">University of California, San Diego (UC San Diego)</option>
+                        <option value="umich">University of Michigan-Ann Arbor</option>
+                        <option value="waterloo">University of Waterloo</option>
+                        <option value="yale">Yale University</option>
+                        <option value="usc">University of Southern California (USC)</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="other_university" name="other_university" placeholder="Please specify your university" style="display:none;">
+                </div>
+
+                <div class="form-group">
+                    <label for="current_profession">What is your main gig right now?</label>
+                    <select id="current_profession" name="current_profession" required>
+                        <option value="building_startup">Building a Startup</option>
+                        <option value="content_creator">Content Creator</option>
+                        <option value="corporate_job_full_time">Corporate Job</option>
+                        <option value="creative_professional">Creative Professional (Artist, Writer, Musician, etc.)</option>
+                        <option value="digital_nomad">Digital Nomad</option>
+                        <option value="freelancer">Freelancer</option>
+                        <option value="healthcare_professional">Healthcare Professional</option>
+                        <option value="student">Student</option>
+                        <option value="research_assistant">Research Assistant</option>
+                        <option value="running_business">Running a Business</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="other_profession" name="other_profession" placeholder="Please specify your profession" style="display:none;">
+                </div>
+
+                <div class="form-group">
+                    <label for="relationship_commitment">How much time and effort do you prefer to invest in a relationship? (Select all that apply)</label>
+                    <select id="relationship_commitment" name="relationship_commitment[]" multiple required>
+                        <option value="daily_phone_calls">Daily phone calls</option>
+                        <option value="frequent_texts">Frequent texts throughout the day</option>
+                        <option value="weekly_dates">Weekly dates</option>
+                        <option value="weekend_getaways">Weekend getaways</option>
+                        <option value="monthly_meetups">Monthly meetups</option>
+                        <option value="occasional_video_chats">Occasional video chats</option>
+                        <option value="spontaneous_meetups">Spontaneous meetups when possible</option>
+                        <option value="long_weekend_visits">Long weekend visits</option>
+                        <option value="vacation_trips">Vacation trips together</option>
+                        <option value="minimal_interaction">Minimal interaction, prefer space</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="other_commitment" name="other_commitment" placeholder="Please specify your preference" style="display:none;">
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" onclick="showSection('personalInfo')">Go Back</button>
+                    <button type="button" onclick="showSection('culturalBackground')">Next</button>
+                </div>
+            </section>
+
+            <!-- Cultural Background -->
+            <section id="culturalBackground" style="display:none;">
+                <h2>Where I'm Really From</h2>
+
+                <!-- Specific or Mix of Cultures -->
+                <div class="form-group">
+                    <label for="cultural_identity">Do you feel like you belong to one specific culture, or a mix of cultures?</label>
+                    <select id="cultural_identity" name="cultural_identity" required onchange="toggleMulticulturalBackground()">
+                        <option value="specific_culture">One specific culture</option>
+                        <option value="mix_of_cultures">A mix of cultures</option>
+                    </select>
+                </div>
+
+                <!-- Specify Cultures -->
+                <div class="form-group">
+                    <label for="specific_cultures">Please specify the cultures you feel you belong to:</label>
+                    <textarea id="specific_cultures" name="specific_cultures" placeholder="List the cultures you identify with"></textarea>
+                </div>
+
+                <!-- Benefits and Challenges of Multicultural Background -->
+                <div class="form-group" id="benefits_challenges_group" style="display: none;">
+                    <label for="benefits_challenges_multicultural">What are some of the benefits and challenges of having a multicultural background?</label>
+                    <textarea id="benefits_challenges_multicultural" name="benefits_challenges_multicultural" placeholder="Please specify the benefits and/or challenges"></textarea>
+                </div>
+
+                <!-- Relate to Different Backgrounds -->
+                <div class="form-group">
+                    <label for="relating_to_different_backgrounds">Do you ever feel like you can relate to people from different backgrounds more easily?</label>
+                    <select id="relating_to_different_backgrounds" name="relating_to_different_backgrounds" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" onclick="showSection('demographics')">Go Back</button>
+                    <button type="button" onclick="showSection('familyDynamics')">Next</button>
+                </div>
+            </section>
+
+            <!-- Family Dynamics -->
+            <section id="familyDynamics" style="display:none;">
+                <h2>Family: Can't Live With 'Em...</h2>
+
+                <div class="form-group">
+                    <label for="family_role">What role did you often play in your family (e.g., peacemaker, leader, caretaker)?</label>
+                    <select id="family_role" name="family_role" required>
+                        <option value="peacemaker">Peacemaker</option>
+                        <option value="leader">Leader</option>
+                        <option value="caretaker">Caretaker</option>
+                        <option value="rebel">Rebel</option>
+                        <option value="mediator">Mediator</option>
+                        <option value="dependent">Dependent</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="family_core_values">What core values or beliefs were emphasized in your family? Please rank them in order of importance.</label>
+                    <select id="family_core_values" name="family_core_values[]" multiple required>
+                        <option value="honesty">Honesty</option>
+                        <option value="respect">Respect</option>
+                        <option value="loyalty">Loyalty</option>
+                        <option value="education">Education</option>
+                        <option value="hard_work">Hard Work</option>
+                        <option value="kindness">Kindness</option>
+                        <option value="generosity">Generosity</option>
+                        <option value="faith">Faith</option>
+                        <option value="independence">Independence</option>
+                        <option value="family">Family</option>
+                        <option value="responsibility">Responsibility</option>
+                        <option value="tradition">Tradition</option>
+                        <option value="creativity">Creativity</option>
+                        <option value="compassion">Compassion</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="parents_relationship">Which of these best describes how you perceived your parents' relationship, and how it might have influenced your views on relationships?</label>
+                    <select id="parents_relationship" name="parents_relationship" required>
+                        <option value="supportive_and_loving">They were supportive and loving towards each other</option>
+                        <option value="resolved_conflicts_peacefully">They resolved conflicts peacefully and with respect</option>
+                        <option value="maintained_independence">They maintained their independence while being together</option>
+                        <option value="showed_affection_openly">They showed affection openly and regularly</option>
+                        <option value="divided_responsibilities">They divided responsibilities clearly and effectively</option>
+                        <option value="sometimes_argued">They sometimes argued but always made up</option>
+                        <option value="emotionally_distant">They were emotionally distant but avoided conflict</option>
+                        <option value="frequent_conflicts">They frequently had heated conflicts</option>
+                        <option value="separated_or_divorced">They separated or divorced during my childhood</option>
+                        <option value="single_parent_household">I was raised in a single-parent household</option>
+                        <option value="complex_family_structure">We had a complex family structure (e.g., step-parents, guardians)</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="family_conflict_handling">How did your family typically handle conflicts?</label>
+                    <select id="family_conflict_handling" name="family_conflict_handling" required>
+                        <option value="open_discussions">Open discussions and resolution</option>
+                        <option value="avoidance">Avoidance of conflict</option>
+                        <option value="heated_arguments">Heated arguments</option>
+                        <option value="third_party_mediation">Involving a third party for mediation</option>
+                        <option value="other">Other (please specify)</option>
+                    </select>
+                    <textarea id="other_conflict_handling" name="other_conflict_handling" placeholder="If other, please specify" style="display:none;"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="family_communication">How did your family communicate feelings and needs?</label>
+                    <select id="family_communication" name="family_communication" required>
+                        <option value="open_and_honest">Open and honest communication</option>
+                        <option value="indirect">Indirect communication through actions</option>
+                        <option value="written_notes">Written notes or letters</option>
+                        <option value="silent_treatment">That is not something we did</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="emotion_expression">Were you encouraged to express your emotions freely as a child?</label>
+                    <select id="emotion_expression" name="emotion_expression" required>
+                        <option value="yes">Yes, always</option>
+                        <option value="sometimes">Sometimes, depending on the situation</option>
+                        <option value="no">No, rarely</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="self_esteem">Which statement best describes how you felt about yourself growing up?</label>
+                    <select id="self_esteem" name="self_esteem" required>
+                        <option value="very_high">I felt very confident and capable</option>
+                        <option value="high">I generally felt good about myself</option>
+                        <option value="average">I had my ups and downs, but mostly felt okay</option>
+                        <option value="low">I often doubted myself and my abilities</option>
+                        <option value="very_low">I struggled with self-worth and confidence</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="personal_boundaries">Were personal boundaries respected in your household?</label>
+                    <select id="personal_boundaries" name="personal_boundaries" required>
+                        <option value="yes">Yes, always</option>
+                        <option value="sometimes">Sometimes, depending on the situation</option>
+                        <option value="no">No, rarely</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="respect_in_family">What was the main way your family demonstrated respect for one another?</label>
+                    <select id="respect_in_family" name="respect_in_family" required>
+                        <option value="open_communication">Through open and honest communication</option>
+                        <option value="listening">By actively listening to each other</option>
+                        <option value="politeness">Using polite language and manners</option>
+                        <option value="honoring_privacy">By honoring each other's privacy and personal space</option>
+                        <option value="acknowledging_efforts">Acknowledging and appreciating each other's efforts</option>
+                        <option value="following_rules">Adhering to established family rules and guidelines</option>
+                        <option value="valuing_opinions">Valuing and considering each other's opinions and feelings</option>
+                        <option value="supporting_each_other">Offering support and encouragement</option>
+                        <option value="taking_responsibility">Taking responsibility for one's actions</option>
+                        <option value="showing_gratitude">Expressing gratitude and saying thank you</option>
+                        <option value="respecting_boundaries">Respecting personal boundaries</option>
+                        <option value="showing_loyalty">Demonstrating loyalty and trust</option>
+                        <option value="other">Other (please specify)</option>
+                    </select>
+                    <textarea id="other_respect" name="other_respect" placeholder="If other, please specify" style="display:none;"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="significant_life_events">Did you experience any significant traumas or losses during your childhood that might affect your behavior or personality?</label>
+                    <select id="significant_life_events" name="significant_life_events" required onchange="toggleImpactOfEvents()">
+                        <option value="no">No</option>
+                        <option value="loss_of_a_loved_one">Loss of a loved one</option>
+                        <option value="parental_divorce">Parents divorced or separated</option>
+                        <option value="serious_illness">Experienced a serious illness or injury</option>
+                        <option value="abuse_or_trauma">Experienced abuse or trauma</option>
+                        <option value="bullying">Experienced bullying or social challenges</option>
+                        <option value="family_conflict">Frequent family conflicts or fights</option>
+                        <option value="financial_hardship">Family faced financial hardship</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="impact_of_events_group" style="display:none;">
+                    <label for="impact_of_events">How did these events affect you?</label>
+                    <select id="impact_of_events" name="impact_of_events" required>
+                        <option value="positive_growth">Led to positive growth and resilience</option>
+                        <option value="emotional_challenges">Caused emotional challenges and difficulties</option>
+                        <option value="strengthened_family_bonds">Strengthened family bonds</option>
+                        <option value="loss_of_trust">Resulted in a loss of trust in others</option>
+                        <option value="improved_adaptability">Improved adaptability and flexibility</option>
+                        <option value="struggle_with_confidence">Caused struggles with self-confidence</option>
+                        <option value="developed_independence">Developed a strong sense of independence</option>
+                        <option value="felt_isolated">Felt isolated or lonely</option>
+                        <option value="fear_of_abandonment">Developed a fear of abandonment</option>
+                        <option value="avoidant_behavior">Led to avoidant behavior</option>
+                        <option value="self_sabotage">Tended to self-sabotage</option>
+                        <option value="difficulty_trusting">Difficulty trusting others</option>
+                        <option value="anxiety">Increased anxiety levels</option>
+                        <option value="other">Other (please specify)</option>
+                    </select>
+                    <textarea id="other_impact_of_events" name="other_impact_of_events" placeholder="If other, please specify" style="display:none;"></textarea>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" onclick="showSection('culturalBackground')">Go Back</button>
+                    <button type="button" onclick="showSection('personalityBehavior')">Next</button>
+                </div>
+            </section>
+
+            <!-- Personality and Behavior -->
+            <section id="personalityBehavior" style="display:none;">
+                <h2>My Quirks and Perks</h2>
+
+                <div class="form-group">
+                    <label for="trip_planning">When planning a trip, what is your approach?</label>
+                    <select id="trip_planning" name="trip_planning" required>
+                        <option value="detailed_itinerary">Creating a detailed itinerary</option>
+                        <option value="spontaneous">Being spontaneous and flexible</option>
+                        <option value="balanced">Having a mix of planned and spontaneous activities</option>
+                        <option value="researching">Researching extensively before going</option>
+                        <option value="minimal_planning">Doing minimal planning and going with the flow</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="social_event_feeling">How do you feel after attending a large social event?</label>
+                    <select id="social_event_feeling" name="social_event_feeling" required>
+                        <option value="energized">Energized and excited</option>
+                        <option value="tired">Tired but happy</option>
+                        <option value="overwhelmed">Overwhelmed and drained</option>
+                        <option value="indifferent">Indifferent, it varies</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="share_news">How do you usually share important news?</label>
+                    <select id="share_news" name="share_news" required>
+                        <option value="face_to_face">Face-to-face</option>
+                        <option value="phone_call">Phone call</option>
+                        <option value="text_message">Text message</option>
+                        <option value="social_media">Social media</option>
+                        <option value="email">Email</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="disagree_response">When you disagree with someone, how do you typically respond?</label>
+                    <select id="disagree_response" name="disagree_response" required>
+                        <option value="discuss_calmly">Discuss calmly and listen to their point of view</option>
+                        <option value="assertive">Assert my opinion strongly</option>
+                        <option value="avoid_conflict">Avoid conflict and change the subject</option>
+                        <option value="find_compromise">Try to find a compromise</option>
+                        <option value="become_silent">Become silent and withdraw</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="friend_upset_reaction">How do you react when a friend is upset?</label>
+                    <select id="friend_upset_reaction" name="friend_upset_reaction" required>
+                        <option value="offer_support">Offer support and listen</option>
+                        <option value="give_space">Give them space to process</option>
+                        <option value="try_to_fix">Try to fix their problem</option>
+                        <option value="distract">Distract them with something fun</option>
+                        <option value="share_experience">Share a similar experience to relate</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="time_away_partner">How do you feel about spending time away from your partner?</label>
+                    <select id="time_away_partner" name="time_away_partner" required>
+                        <option value="everyday_together">I prefer to be with my partner every day</option>
+                        <option value="several_times_week">I enjoy being with my partner several times a week</option>
+                        <option value="once_week">Once a week is enough for me</option>
+                        <option value="few_times_month">I am comfortable seeing my partner a few times a month</option>
+                        <option value="once_month">Once a month, with regular virtual communication</option>
+                        <option value="few_times_year">A few times a year, but we maintain frequent virtual contact</option>
+                        <option value="rarely">Rarely, I value my alone time but stay connected virtually</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="admired_qualities">Select the two most important qualities do you admire most in others?</label>
+                    <select id="admired_qualities" name="admired_qualities[]" multiple required>
+                        <option value="honesty">Honesty</option>
+                        <option value="kindness">Kindness</option>
+                        <option value="intelligence">Intelligence</option>
+                        <option value="humor">Humor</option>
+                        <option value="creativity">Creativity</option>
+                        <option value="empathy">Empathy</option>
+                        <option value="confidence">Confidence</option>
+                        <option value="patience">Patience</option>
+                        <option value="adventurousness">Adventurousness</option>
+                        <option value="loyalty">Loyalty</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="perfect_weekend">What does a perfect weekend look like to you? Select your top three</label>
+                    <select id="perfect_weekend" name="perfect_weekend[]" multiple required>
+                        <option value="outdoor_adventure">Outdoor adventure and activities</option>
+                        <option value="relaxing_at_home">Relaxing at home with a good book or movie</option>
+                        <option value="social_gathering">Spending time with friends and family</option>
+                        <option value="exploring_city">Exploring a new city or place</option>
+                        <option value="hobby_time">Working on a hobby or personal project</option>
+                        <option value="night_out">Going out for a night on the town</option>
+                        <option value="going_to_club">Going to a club or bar</option>
+                        <option value="attending_rave">Attending a rave or music festival</option>
+                        <option value="fitness_and_wellness">Engaging in fitness or wellness activities</option>
+                        <option value="traveling">Traveling to a new destination</option>
+                        <option value="concert_or_event">Attending a concert, festival, or event</option>
+                        <option value="volunteering">Volunteering or participating in community service</option>
+                        <option value="gaming">Playing video games or board games</option>
+                        <option value="brunch_and_shopping">Brunch and shopping with friends</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="pets">Do you have or want pets?</label>
+                    <select id="pets" name="pets" required>
+                        <option value="have_dogs">Yes, I have dog(s)</option>
+                        <option value="have_cats">Yes, I have cat(s)</option>
+                        <option value="have_other_pets">Yes, I have other pets</option>
+                        <option value="want_pets">No, but I want pets in the future</option>
+                        <option value="no_pets">I do not want pets</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ideal_social_scenario">What is your ideal social scenario?</label>
+                    <select id="ideal_social_scenario" name="ideal_social_scenario" required>
+                        <option value="small_gatherings">Small gatherings with close friends</option>
+                        <option value="large_parties">Large parties or events</option>
+                        <option value="one_on_one">One-on-one conversations</option>
+                        <option value="public_events">Public events like concerts or festivals</option>
+                        <option value="social_media">Engaging through social media</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="conflict_arises">Be honest... what do you do when a conflict arises?</label>
+                    <select id="conflict_arises" name="conflict_arises" required>
+                        <option value="address_directly">Address it directly and immediately</option>
+                        <option value="find_mediation">Find mediation or a neutral party</option>
+                        <option value="avoid_conflict">Avoid conflict and hope it resolves itself</option>
+                        <option value="compromise">Look for a compromise solution</option>
+                        <option value="withdraw">Withdraw and think it over alone</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="social_interaction">What type of social interaction do you prefer?</label>
+                    <select id="social_interaction" name="social_interaction" required>
+                        <option value="small_gatherings">Small gatherings with close friends</option>
+                        <option value="large_events">Large events or parties</option>
+                        <option value="one_on_one">One-on-one conversations</option>
+                        <option value="online_interaction">Online interaction</option>
+                        <option value="public_events">Public events like concerts or festivals</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="learning_preference">How do you prefer to learn new things?</label>
+                    <select id="learning_preference" name="learning_preference" required>
+                        <option value="reading">Reading books or articles</option>
+                        <option value="hands_on">Hands-on practice</option>
+                        <option value="videos">Watching videos or tutorials</option>
+                        <option value="group_learning">Group learning or classes</option>
+                        <option value="trial_and_error">Trial and error</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="moral_guidance">What guides your moral decisions?</label>
+                    <select id="moral_guidance" name="moral_guidance" required>
+                        <option value="religion">Religion</option>
+                        <option value="personal_values">Personal values</option>
+                        <option value="family_values">Family values</option>
+                        <option value="societal_norms">Societal norms</option>
+                        <option value="legal_standards">Legal standards</option>
+                        <option value="empathy">Empathy and compassion</option>
+                    </select>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" onclick="showSection('familyDynamics')">Go Back</button>
+                    <button type="button" onclick="showSection('relationshipPreferences')">Next</button>
+                </div>
+            </section>
+
+            <!-- Relationship Preferences -->
+            <section id="relationshipPreferences" style="display:none;">
+                <h2>Relationships but Make It Spicy</h2>
+
+                <div class="form-group">
+                    <label for="gender_identity">What is your gender identity?</label>
+                    <select id="gender_identity" name="gender_identity" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="non_binary">Non-binary</option>
+                        <option value="genderqueer">Genderqueer</option>
+                        <option value="genderfluid">Genderfluid</option>
+                        <option value="agender">Agender</option>
+                        <option value="bigender">Bigender</option>
+                        <option value="two_spirit">Two-Spirit</option>
+                        <option value="transgender_male">Transgender Male</option>
+                        <option value="transgender_female">Transgender Female</option>
+                        <option value="prefer_not_to_say">Prefer not to say</option>
+                        <option value="other">Other (please specify)</option>
+                    </select>
+                    <textarea id="other_gender_identity" name="other_gender_identity" placeholder="If other, please specify" style="display:none;"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="sexual_orientation">What is your sexual orientation?</label>
+                    <select id="sexual_orientation" name="sexual_orientation" required>
+                        <option value="heterosexual">Heterosexual</option>
+                        <option value="homosexual">Homosexual</option>
+                        <option value="bisexual">Bisexual</option>
+                        <option value="pansexual">Pansexual</option>
+                        <option value="asexual">Asexual</option>
+                        <option value="demisexual">Demisexual</option>
+                        <option value="queer">Queer</option>
+                        <option value="questioning">Questioning</option>
+                        <option value="prefer_not_to_say">Prefer not to say</option>
+                        <option value="other">Other (please specify)</option>
+                    </select>
+                    <textarea id="other_sexual_orientation" name="other_sexual_orientation" placeholder="If other, please specify" style="display:none;"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="libido_level">How would you describe your libido level?</label>
+                    <select id="libido_level" name="libido_level" required>
+                        <option value="very_high">Very high</option>
+                        <option value="high">High</option>
+                        <option value="average">Average</option>
+                        <option value="low">Low</option>
+                        <option value="very_low">Very low</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="intimacy_timing">When do you feel comfortable being intimate for the first time?</label>
+                    <select id="intimacy_timing" name="intimacy_timing" required>
+                        <option value="first_date">On the first date</option>
+                        <option value="few_dates">After a few dates</option>
+                        <option value="few_weeks">After a few weeks</option>
+                        <option value="few_months">After a few months</option>
+                        <option value="when_feels_right">When it feels right</option>
+                        <option value="marriage">After marriage</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="sexual_preferences_discussion">How comfortable are you discussing sexual preferences with your partner?</label>
+                    <select id="sexual_preferences_discussion" name="sexual_preferences_discussion" required>
+                        <option value="very_comfortable">Very comfortable</option>
+                        <option value="comfortable">Comfortable</option>
+                        <option value="somewhat_comfortable">Somewhat comfortable</option>
+                        <option value="uncomfortable">Uncomfortable</option>
+                        <option value="very_uncomfortable">Very uncomfortable</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="experiments_interest">What are some things you’re interested in trying?</label>
+                    <select id="experiments_interest" name="experiments_interest[]" multiple>
+                        <option value="masochism">Masochism (Deriving pleasure from pain)</option>
+                        <option value="group_sex">Group sex (Sex with multiple partners)</option>
+                        <option value="sadism">Sadism (Deriving pleasure from inflicting pain)</option>
+                        <option value="voyeurism">Voyeurism (Watching others engage in sexual activity)</option>
+                        <option value="exhibitionism">Exhibitionism (Deriving pleasure from being seen)</option>
+                        <option value="bondage">Bondage (Restraining with ropes or cuffs)</option>
+                        <option value="dominance_submission">Dominance/submission (Power exchange dynamics)</option>
+                        <option value="anal_play">Anal play (Stimulation of the anus)</option>
+                        <option value="orgasm_control_denial">Orgasm control/denial (Controlling or denying orgasm)</option>
+                        <option value="impact_play">Impact play (Using paddles, floggers, etc.)</option>
+                        <option value="sensory_deprivation">Sensory deprivation (Blocking senses like sight or sound)</option>
+                        <option value="wax_play">Wax play (Dripping hot wax on the body)</option>
+                        <option value="cnc">Consensual non-consent (CNC) (Role-playing non-consensual scenarios)</option>
+                        <option value="age_play">Age play (Role-playing different ages)</option>
+                        <option value="leather_latex_fetish">Leather/latex fetish (Sexual attraction to leather or latex)</option>
+                        <option value="cuckolding">Cuckolding (Watching partner with others)</option>
+                        <option value="rope_bondage">Rope bondage (Shibari, intricate rope work)</option>
+                        <option value="electrostimulation">Electrostimulation (Using electricity for stimulation)</option>
+                        <option value="furry_play">Furry play (Role-playing as anthropomorphic animals)</option>
+                        <option value="breath_play">Breath play (Controlled breathing restrictions, with caution)</option>
+                        <option value="humiliation">Humiliation (Deriving pleasure from being humiliated)</option>
+                        <option value="objectification">Objectification (Treating someone as an object)</option>
+                        <option value="edging">Edging (Bringing to the brink of orgasm repeatedly)</option>
+                        <option value="pegging">Pegging (Anal penetration with a strap-on)</option>
+                        <option value="consensual_voyeurism">Consensual voyeurism (Hotwifing, watching partner with others)</option>
+                        <option value="orgasm_control">Orgasm control (Managing partner's orgasms)</option>
+                        <option value="praise_kink">Praise kink (Deriving pleasure from receiving praise)</option>
+                        <option value="degradation">Degradation (Deriving pleasure from being degraded)</option>
+                        <option value="suspension">Suspension (Hanging or suspending the body)</option>
+                        <option value="none">Not interested in any of these</option>
+                    </select>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" onclick="showSection('personalityBehavior')">Go Back</button>
+                    <button type="button" onclick="showSection('intellectualCompatibility')">Next</button>
+                </div>
+            </section>
+
+            <!-- Intellectual Compatibility -->
+            <section id="intellectualCompatibility" style="display:none;">
+                <h2>Smart Stuff I Pretend to Know</h2>
+
+                <div class="form-group">
+                    <label for="philosophical_quote">Which of these ideas resonates with you the most?</label>
+                    <select id="philosophical_quote" name="philosophical_quote" required>
+                        <option value="self_examination">The importance of self-examination and reflection</option>
+                        <option value="rational_thought">The power of rational thought and skepticism</option>
+                        <option value="perception_reality">Reality is shaped by perception</option>
+                        <option value="individual_freedom">The struggle for individual freedom and authenticity</option>
+                        <option value="uncertainty">Embracing uncertainty and doubt as a path to knowledge</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="historical_event">Which historical moment would you love to have witnessed?</label>
+                    <select id="historical_event" name="historical_event" required>
+                        <option value="moon_landing">The first Moon landing</option>
+                        <option value="fall_of_berlin_wall">The fall of the Berlin Wall</option>
+                        <option value="signing_declaration">The signing of the Declaration of Independence</option>
+                        <option value="renaissance_peak">The peak of the Renaissance</option>
+                        <option value="ancient_civilization">A significant event in an ancient civilization</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="recommended_book">Which book would you suggest to someone looking to broaden their perspective?</label>
+                    <select id="recommended_book" name="recommended_book" required>
+                        <option value="sapiens">Sapiens by Yuval Noah Harari</option>
+                        <option value="1984">1984 by George Orwell</option>
+                        <option value="brave_new_world">Brave New World by Aldous Huxley</option>
+                        <option value="meditations">Meditations by Marcus Aurelius</option>
+                        <option value="thinking_fast_slow">Thinking, Fast and Slow by Daniel Kahneman</option>
+                        <option value="to_kill_a_mockingbird">To Kill a Mockingbird by Harper Lee</option>
+                        <option value="mans_search_for_meaning">Man's Search for Meaning by Viktor Frankl</option>
+                        <option value="the_alchemist">The Alchemist by Paulo Coelho</option>
+                        <option value="cosmos">Cosmos by Carl Sagan</option>
+                        <option value="guns_germs_steel">Guns, Germs, and Steel by
+                            Jared Diamond</option>
+                            <option value="the_power_of_now">The Power of Now by Eckhart Tolle</option>
+                            <option value="the_road">The Road by Cormac McCarthy</option>
+                            <option value="a_brief_history_of_time">A Brief History of Time by Stephen Hawking</option>
+                            <option value="pride_and_prejudice">Pride and Prejudice by Jane Austen</option>
+                            <option value="the_catcher_in_the_rye">The Catcher in the Rye by J.D. Salinger</option>
+                            <option value="freakonomics">Freakonomics by Steven D. Levitt and Stephen J. Dubner</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="scientific_concept">Which scientific idea captivates your curiosity the most?</label>
+                        <select id="scientific_concept" name="scientific_concept" required>
+                            <option value="relativity">Theory of Relativity</option>
+                            <option value="quantum_mechanics">Quantum Mechanics</option>
+                            <option value="evolution">Theory of Evolution</option>
+                            <option value="black_holes">The mystery of Black Holes</option>
+                            <option value="genetics">The secrets of DNA and Genetics</option>
+                            <option value="artificial_intelligence">Artificial Intelligence</option>
+                            <option value="neuroscience">The workings of the human brain (Neuroscience)</option>
+                            <option value="ecology">Ecosystems and Ecology</option>
+                            <option value="space_exploration">Space Exploration</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="puzzle_type">Which type of puzzle or challenge do you enjoy the most?</label>
+                        <select id="puzzle_type" name="puzzle_type" required>
+                            <option value="crossword">Crossword Puzzles</option>
+                            <option value="sudoku">Sudoku</option>
+                            <option value="logic_puzzles">Logic Puzzles</option>
+                            <option value="riddles">Riddles</option>
+                            <option value="escape_rooms">Escape Rooms</option>
+                            <option value="strategy_games">Strategy Games</option>
+                            <option value="jigsaw_puzzles">Jigsaw Puzzles</option>
+                            <option value="brain_teasers">Brain Teasers</option>
+                            <option value="board_games">Board Games</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="art_movement">Which art movement speaks to you the most?</label>
+                        <select id="art_movement" name="art_movement" required>
+                            <option value="renaissance">Renaissance</option>
+                            <option value="impressionism">Impressionism</option>
+                            <option value="cubism">Cubism</option>
+                            <option value="surrealism">Surrealism</option>
+                            <option value="modernism">Modernism</option>
+                            <option value="contemporary">Contemporary</option>
+                            <option value="baroque">Baroque</option>
+                            <option value="romanticism">Romanticism</option>
+                            <option value="abstract">Abstract</option>
+                            <option value="pop_art">Pop Art</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="moral_dilemma">In a moral dilemma, do you tend to rely more on:</label>
+                        <select id="moral_dilemma" name="moral_dilemma" required>
+                            <option value="logic">Logic and reason</option>
+                            <option value="emotion">Emotions and intuition</option>
+                            <option value="context">Considering the context and circumstances</option>
+                            <option value="advice">Seeking advice from others</option>
+                            <option value="principles">Sticking to my principles</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="debate_topic">Which topic would you find most stimulating to debate?</label>
+                        <select id="debate_topic" name="debate_topic" required>
+                            <option value="ethics_technology">Ethics in technology</option>
+                            <option value="climate_change">Climate change and sustainability</option>
+                            <option value="free_will">Free will versus determinism</option>
+                            <option value="privacy">Privacy in the digital age</option>
+                            <option value="space_exploration">The future of space exploration</option>
+                            <option value="economic_inequality">Economic inequality and justice</option>
+                            <option value="artificial_intelligence">Impact of artificial intelligence</option>
+                            <option value="social_media">Influence of social media on society</option>
+                            <option value="healthcare">Healthcare accessibility and ethics</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="greatest_invention">Which invention do you believe has had the greatest impact on humanity?</label>
+                        <select id="greatest_invention" name="greatest_invention" required>
+                            <option value="internet">The Internet</option>
+                            <option value="printing_press">The Printing Press</option>
+                            <option value="electricity">Electricity</option>
+                            <option value="vaccines">Vaccines</option>
+                            <option value="wheel">The Wheel</option>
+                            <option value="penicillin">Penicillin</option>
+                            <option value="computer">The Computer</option>
+                            <option value="telephone">The Telephone</option>
+                            <option value="steam-engine">The Steam Engine</option>
+                            <option value="space_travel">Space Travel</option>
+                            <option value="renewable_energy">Renewable Energy</option>
+                            <option value="genetic_engineering">Genetic Engineering</option>
+                        </select>
+                    </div>
+    
+                    <div class="navigation-buttons">
+                        <button type="button" onclick="showSection('relationshipPreferences')">Go Back</button>
+                        <button type="button" onclick="showSection('emotionalIntelligence')">Next</button>
+                    </div>
+                </section>
+    
+            <!-- Emotional Intelligence -->
+            <section id="emotionalIntelligence" style="display:none;">
+                <h2>Feelings and Other Mysteries</h2>
+
+                <div class="form-group">
+                    <label for="emotion_expression">How do you typically express your emotions?</label>
+                    <select id="emotion_expression" name="emotion_expression" required>
+                        <option value="verbalize_feelings">Talking about them openly</option>
+                        <option value="physical_activity">Through physical activities (e.g., exercise, dance)</option>
+                        <option value="creative_outlets">Using creative outlets (e.g., art, music, writing)</option>
+                        <option value="withdrawal">Withdrawing and spending time alone</option>
+                        <option value="humor">Using humor to lighten the mood</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="emotional_challenges">Which challenge have you most overcome?</label>
+                    <select id="emotional_challenges" name="emotional_challenges[]" multiple required>
+                        <option value="anxiety">Managing anxiety</option>
+                        <option value="self_doubt">Overcoming self-doubt</option>
+                        <option value="anger">Controlling anger</option>
+                        <option value="trust_issues">Building trust in relationships</option>
+                        <option value="communication_skills">Improving communication skills</option>
+                        <option value="fear_of_rejection">Overcoming fear of rejection</option>
+                        <option value="emotional_expressiveness">Becoming more emotionally expressive</option>
+                        <option value="depression">Managing depression</option>
+                        <option value="assertiveness">Becoming more assertive</option>
+                        <option value="boundaries">Setting and maintaining personal boundaries</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="relationship_priority">What is your top priority in a relationship?</label>
+                    <select id="relationship_priority" name="relationship_priority" required>
+                        <option value="trust">Building trust</option>
+                        <option value="communication">Effective communication</option>
+                        <option value="emotional_support">Providing emotional support</option>
+                        <option value="shared_values">Having shared values and goals</option>
+                        <option value="mutual_respect">Maintaining mutual respect</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="emotional_vulnerability">How comfortable are you with being emotionally vulnerable?</label>
+                    <select id="emotional_vulnerability" name="emotional_vulnerability" required>
+                        <option value="very_comfortable">Very comfortable</option>
+                        <option value="somewhat_comfortable">Somewhat comfortable</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="somewhat_uncomfortable">Somewhat uncomfortable</option>
+                        <option value="very_uncomfortable">Very uncomfortable</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="relationship_purpose">What do you believe is the main purpose of a romantic relationship?</label>
+                    <select id="relationship_purpose" name="relationship_purpose" required>
+                        <option value="companionship">Companionship and emotional support</option>
+                        <option value="financial_stability">Financial stability</option>
+                        <option value="family">Building a family</option>
+                        <option value="shared_experiences">Shared experiences and activities</option>
+                        <option value="partnership">Life partnership</option>
+                        <option value="intimacy">Physical intimacy</option>
+                        <option value="goal_support">Supporting each other's goals</option>
+                        <option value="fun">Having fun and enjoying life together</option>
+                        <option value="balance_stability">Providing balance and stability</option>
+                        <option value="spiritual_connection">Spiritual connection and understanding</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mental_health_challenges">Have you ever experienced any of the following mental health challenges?</label>
+                    <select id="mental_health_challenges" name="mental_health_challenges[]" multiple required>
+                        <option value="anxiety">Anxiety</option>
+                        <option value="depression">Depression</option>
+                        <option value="ptsd">PTSD</option>
+                        <option value="ocd">OCD</option>
+                        <option value="bipolar_disorder">Bipolar Disorder</option>
+                        <option value="eating_disorder">Eating Disorder</option>
+                        <option value="adhd">ADHD</option>
+                        <option value="substance_abuse">Substance Abuse</option>
+                        <option value="none">None</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthday_gift">Imagine it's your birthday. Which of the following gifts would make you feel most loved?</label>
+                    <select id="birthday_gift" name="birthday_gift" required>
+                        <option value="personalized_gift">A personalized gift</option>
+                        <option value="experience">An experience (e.g., concert, trip)</option>
+                        <option value="handwritten_note">A heartfelt handwritten note</option>
+                        <option value="quality_time">Quality time spent together</option>
+                        <option value="luxury_item">A luxury item you've wanted</option>
+                        <option value="homemade_gift">A homemade gift</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="show_affection">How do you prefer to show affection to someone you care about?</label>
+                    <select id="show_affection" name="show_affection" required>
+                        <option value="words_of_affirmation">Words of affirmation</option>
+                        <option value="physical_touch">Physical touch</option>
+                        <option value="acts_of_service">Acts of service</option>
+                        <option value="gifts">Giving gifts</option>
+                        <option value="quality_time">Spending quality time together</option>
+                    </select>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" onclick="showSection('intellectualCompatibility')">Go Back</button>
+                    <button type="button" onclick="showSection('selfRevealing')">Next</button>
+                </div>
+            </section>
+
+            <!-- Self-Revealing Questions -->
+            <section id="selfRevealing" style="display:none;">
+                <h2>TMI Corner</h2>
+
+                <div class="form-group">
+                    <label for="proud_moment">Describe a moment in your life when you felt incredibly proud of yourself.</label>
+                    <textarea id="proud_moment" name="proud_moment" placeholder="Share your proud moment" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="passion_project">What passion project are you currently working on or wish to start?</label>
+                    <textarea id="passion_project" name="passion_project" placeholder="Describe your passion project" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="life_motto">What is your life motto or a quote that inspires you?</label>
+                    <textarea id="life_motto" name="life_motto" placeholder="Share your motto or quote" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="favorite_childhood_memory">What is your favorite memory from childhood?</label>
+                    <textarea id="favorite_childhood_memory" name="favorite_childhood_memory" placeholder="Share your favorite childhood memory" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="bucket_list_item">What is one item on your bucket list that you are determined to accomplish?</label>
+                    <textarea id="bucket_list_item" name="bucket_list_item" placeholder="Share your bucket list item" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="kindest_act">What is the kindest act someone has ever done for you?</label>
+                    <textarea id="kindest_act" name="kindest_act" placeholder="Describe the kindest act" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="personal_growth">What area of personal growth are you currently focusing on?</label>
+                    <textarea id="personal_growth" name="personal_growth" placeholder="Describe your current focus on personal growth" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="comfort_item">What is a simple item or activity that brings you comfort, and why?</label>
+                    <textarea id="comfort_item" name="comfort_item" placeholder="Describe the item or activity and its comforting effect" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="hidden_strength">What is a hidden strength or quality you possess that not many people know about?</label>
+                    <textarea id="hidden_strength" name="hidden_strength" placeholder="Describe your hidden strength or quality" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="life_soundtrack">If your life had a soundtrack, which song would play during your most defining moment?</label>
+                    <textarea id="life_soundtrack" name="life_soundtrack" placeholder="Name the song and explain why" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="deeply_grateful">What is one thing you are deeply grateful for, and how has it affected your life?</label>
+                    <textarea id="deeply_grateful" name="deeply_grateful" placeholder="Describe what you are grateful for and its impact" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="unfulfilled_passion">What is a passion or interest you have never pursued but always wanted to?</label>
+                    <textarea id="unfulfilled_passion" name="unfulfilled_passion" placeholder="Describe your unfulfilled passion or interest" required></textarea>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" onclick="showSection('emotionalIntelligence')">Go Back</button>
+                    <button type="button" onclick="showSection('personalInterests')">Next</button>
+                </div>
+            </section>
+
+            <!-- Personal Interests -->
+            <section id="personalInterests" style="display:none;">
+                <h2>What I Do When I'm Procrastinating</h2>
+
+                <div class="form-group">
+                    <label for="proud_upload">Upload a photo, document, or video of something you're proud of and explain why.</label>
+                    <input type="file" id="proud_upload" name="proud_upload" accept="image/*,video/*,application/pdf" required>
+                    <textarea id="proud_explanation" name="proud_explanation" placeholder="Explain why you are proud of this" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="dream_job">What would your dream job be if you could do anything in the world?</label>
+                    <textarea id="dream_job" name="dream_job" placeholder="Describe your dream job" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="unusual_hobby">Do you have an unusual hobby or interest? What is it?</label>
+                    <textarea id="unusual_hobby" name="unusual_hobby" placeholder="Describe your unusual hobby or interest" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="inspiration_source">Where do you find the most inspiration?</label>
+                    <select id="inspiration_source" name="inspiration_source" required>
+                        <option value="nature">Nature</option>
+                        <option value="music">Music</option>
+                        <option value="books">Books</option>
+                        <option value="art">Art</option>
+                        <option value="travel">Travel</option>
+                        <option value="conversations">Conversations with Others</option>
+                        <option value="personal_experiences">Personal Experiences</option>
+                        <option value="films">Films</option>
+                        <option value="dreams">Dreams</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="creative_outlets">What are your favorite creative outlets?</label>
+                    <textarea id="creative_outlets" name="creative_outlets" placeholder="Describe your favorite creative outlets" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="creative_project">What type of creative project excites you the most?</label>
+                    <select id="creative_project" name="creative_project" required>
+                        <option value="art_exhibition">Art Exhibition</option>
+                        <option value="music_album">Creating a Music Album</option>
+                        <option value="novel">Writing a Novel</option>
+                        <option value="theater_performance">Theater Performance</option>
+                        <option value="film">Making a Film</option>
+                        <option value="fashion_design">Fashion Design</option>
+                        <option value="app_development">App Development</option>
+                        <option value="interactive_media">Interactive Media</option>
+                        <option value="game_design">Game Design</option>
+                        <option value="animation_project">Animation Project</option>
+                        <option value="photography_exhibit">Photography Exhibit</option>
+                        <option value="sculpture_series">Sculpture Series</option>
+                        <option value="digital_art_collection">Digital Art Collection</option>
+                        <option value="installation_art">Installation Art</option>
+                        <option value="public_art_project">Public Art Project</option>
+                        <option value="podcast_series">Podcast Series</option>
+                    </select>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" onclick="showSection('selfRevealing')">Go Back</button>
+                    <button type="button" onclick="showSection('confirmation')">Next</button>
+                </div>
+            </section>
+
+            <!-- Confirmation -->
+            <section id="confirmation" style="display:none;">
+                <h2>The "Are You Sure?" Moment</h2>
+
+                <div class="form-group checkbox-container">
+                    <label for="ageConfirmation">I confirm that I am over the age of 18</label>
+                    <input type="checkbox" id="ageConfirmation" name="ageConfirmation" required>
+                </div>
+
+                <div class="form-group checkbox-container">
+                    <label for="rulesEngagement">I have read and agree to the <a href="#" id="openRulesModal">rules of engagement</a></label>
+                    <input type="checkbox" id="rulesEngagement" name="rulesEngagement" required>
+                </div>
+
+                <!-- The Modal -->
+                <div id="rulesModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Rules of Engagement</h2>
+                        <p>Here you can put the rules of engagement text...</p>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" onclick="showSection('personalInterests')">Go Back</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </section>
+        </form>
+    </main>
+
+    <div class="fixed-bottom-info">
+        <ul>
+            <li><b>Questions marked with. . .  </b> '+' : responses will be be used to create your public profile <b>|</b> '*' : responses will be used to determine matches and remain private</li>
+        </ul>
+        <ul>
+            <li><b>How do I select more than one answer?  </b> Desktop User  > Hold Ctrl/Cmd to select multiple <b>|</b>  Mobile User   > Just select the most relevant answer</li>
+        </ul>
+    </div>
+
+    <script src="script-reg-my.js"></script>
+</body>
+</html>

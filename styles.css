@@ -1,0 +1,355 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8e5c1;
+    color: #4a2e4b;
+    text-align: center;
+}
+
+/* Header Styles */
+.horizontal-header {
+    background-color: #4a2e4b;
+    color: #f8e5c1;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.horizontal-header h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+}
+
+/* Button Styles */
+.horizontal-header button, .fun-button, button[type="submit"] {
+    background-color: #f8e5c1;
+    color: #4a2e4b;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 4px;
+}
+
+.horizontal-header button:hover, .fun-button:hover, button[type="submit"]:hover {
+    background-color: #7b5876;
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px dashed #4a2e4b;
+    background-color: #f8e5c1;
+}
+
+section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #4a2e4b;
+}
+
+a {
+    color: #4a2e4b;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Countdown Styles */
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+#countdown div {
+    background: #f8e5c1;
+    color: #4a2e4b;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Menu Styles */
+.vertical-menu {
+    width: 100%;
+    background-color: #4a2e4b;
+    overflow: hidden;
+    position: relative;
+}
+
+.menu-icon {
+    display: block;
+    color: white;
+    padding: 16px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.menu-content {
+    display: none;
+    flex-direction: column;
+}
+
+.menu-content a {
+    display: block;
+    font-family: 'Courier New', Courier, monospace;
+    color: #f8e5c1;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.menu-content a:hover, .menu-content a.active {
+    background-color: #6D4987;
+}
+
+@media screen and (min-width: 600px) {
+    .vertical-menu {
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+    }
+    .menu-icon {
+        display: none;
+    }
+    .menu-content {
+        display: flex;
+    }
+    main {
+        margin-left: 260px; /* Adjust to match the width of the vertical menu */
+    }
+}
+
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px dashed #4a2e4b;
+    background-color: #f8e5c1;
+    width: 100%;
+}
+
+form label {
+    margin: 10px 0 5px;
+}
+
+form input, form textarea, form select {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #4a2e4b;
+    border-radius: 4px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.form-group label {
+    flex: 1;
+    min-width: 150px;
+    padding: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="number"],
+.form-group select {
+    flex: 2;
+    padding: 8px;
+    margin-left: 10px;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-left: 10px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-group label, 
+    .form-group input[type="text"],
+    .form-group input[type="tel"],
+    .form-group input[type="number"],
+    .form-group select {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .checkbox-container {
+        flex-direction: row;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+        margin-right: 10px;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    color: #4a2e4b;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Specific Form Group Styles */
+#other_city,
+#other_expected_city,
+#other_education,
+#other_university,
+#other_profession,
+#other_commitment,
+#other_gender_identity,
+#other_sexual_orientation,
+#other_respect,
+#other_conflict_handling,
+#other_impact_of_events {
+    display: none;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navigation-buttons button {
+    padding: 10px;
+    background-color: #4a2e4b;
+    color: #f8e5c1;
+    border: none;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.navigation-buttons button:hover {
+    background-color: #7b5876;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center; /* Centers the button horizontally */
+    align-items: center; /* Centers the button vertically */
+    width: 100%;
+}
+
+.navigation-buttons button {
+    padding: 10px 20px;
+    background-color: #4a2e4b;
+    color: #f8e5c1;
+    border: none;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 4px;
+}
+
+.navigation-buttons button:hover {
+    background-color: #7b5876;
+}
+
+.fixed-bottom-info {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8e5c1;
+    color: #4a2e4b;
+    text-align: left;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    font-size: 0.9rem; /* Adjust the font size as needed */
+}
+
+.fixed-bottom-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.fixed-bottom-info ul ul {
+    padding-left: 20px; /* Indent nested lists */
+}
+
+.fixed-bottom-info p,
+.fixed-bottom-info ul li {
+    margin: 5px 0;
+}
+
+
